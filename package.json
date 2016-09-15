@@ -1,0 +1,26 @@
+{
+  "name": "battles",
+  "version": "1.0.0",
+  "description": "The service for creation battles using TV and Smartphones.",
+  "main": "\"\"",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/extremeprog-com/battles.git"
+  },
+  "keywords": [
+    "battle",
+    "SmartTV"
+  ],
+  "author": "Alexandra Mourzina, Oleg Sergienko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/extremeprog-com/battles/issues"
+  },
+  "homepage": "https://github.com/extremeprog-com/battles#readme",
+  "dependencies": {
+    "core-os": "^0.1.0"
+  }
+}

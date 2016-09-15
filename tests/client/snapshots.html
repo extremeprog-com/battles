@@ -1,0 +1,26 @@
+<html>
+<head>
+    <style>
+        img {
+            position: absolute;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <img id="snapshot0" src="#"/>
+    <img id="snapshot1" src="#" onload="setTimeout(load, 100)"/>
+</body>
+<script>
+    var _to, i = 0;
+    function load() {
+        console.log(111);
+        console.log(location.hash.substr(1), location.hash);
+        clearTimeout(_to);
+        document.getElementById('snapshot0').src = document.getElementById('snapshot1').src;
+        document.getElementById('snapshot1').src = location.href.replace(/html$/,'jpg') + "#" + (++i);
+        _to = setTimeout(load, 1000);
+    }
+    load();
+</script>
+</html>

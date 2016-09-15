@@ -1,0 +1,53 @@
+<html>
+<head>
+    <script type="text/javascript" charset="utf-8" src="jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../integration/lib/sockjs-0.3.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../core/_OS/Core/Core.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../core/_OS/WebServer/CoreAjaxInterface.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../core/_OS/WebServer/IntegrationCommutator.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../integration/tv/TV.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../integration/tv/TVCommutator.js"></script>
+    <script type="text/javascript" charset="utf-8" src="tv.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../node_modules/mocha/mocha.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../node_modules/chai/chai.js"></script>
+    <script>
+        Core.processNamespace(global);
+    </script>
+
+    <script>
+        mocha.setup({
+            ui: 'bdd',
+            reporter: function(runner) {
+                // Note I am registering both an HTML and a TeamCity reporter here
+                // so I can use the same HTML page for local browser development and
+                // TeamCity.
+                new mocha.reporters.HTML(runner);
+                new mocha.reporters.Teamcity(runner);
+            },
+            ignoreLeaks: true,
+            timeout: 5000 // ms
+        });
+        var expect = chai.expect;
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="../integration/tests/checkTVConn.js"></script>
+    <script>
+        if( window.mochaPhantomJS ) { mochaPhantomJS.run(); }
+        else { mocha.run(); }
+    </script>
+</head>
+
+<body>
+
+    <h4>Code to connect</h4>
+    <span id="code"></span>
+
+    <p id="participants_list"></p>
+
+    <span style="text-decoration: underline; color: #ff9900" id="init" >Init</span>
+    <span style="text-decoration: underline; color: #ff9900" id="play" >Play</span>
+    <span style="text-decoration: underline; color: #ff9900" id="pause">Pause</span>
+    <span style="text-decoration: underline; color: #ff9900" id="stop" >Stop</span>
+</body>
+
+</html>

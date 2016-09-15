@@ -1,0 +1,26 @@
+<html>
+<head>
+    <script type="text/javascript" charset="utf-8" src="../integration/lib/sockjs-0.3.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../node_modules/mocha/mocha.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../node_modules/chai/chai.js"></script>
+    <script>
+        mocha.setup({
+            ui: 'bdd',
+            reporter: function(runner) {
+                new mocha.reporters.HTML(runner);
+                new mocha.reporters.Teamcity(runner);
+            },
+            ignoreLeaks: true,
+            timeout: 5000 // ms
+        });
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="../integration/tests/checkSocketConnection.js"></script>
+    <script>
+        if( window.mochaPhantomJS ) { mochaPhantomJS.run(); }
+        else { mocha.run(); }
+    </script>
+</head>
+<body>
+</body>
+</html>
